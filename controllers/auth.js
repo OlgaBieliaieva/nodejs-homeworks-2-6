@@ -80,11 +80,11 @@ const logout = async (req, res) => {
 const updateAvatar = async (req, res) => {
     console.log(req.file)
   const { _id } = req.user;
-  const { path: tempUpload, originalname } = req.file;
+  const { path: tmpUpload, originalname } = req.file;
   imageResizer(path);
   const filename = `${_id}_${originalname}`;
   const resultUpload = path.join(avatarsDir, filename);
-  await fs.rename(tempUpload, resultUpload);
+  await fs.rename(tmpUpload, resultUpload);
   const avatarURL = path.join("avatars", filename);
   await User.findByIdAndUpdate(_id, { avatarURL });
 
