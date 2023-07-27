@@ -1,6 +1,6 @@
 const jimp = require("jimp");
 
-const imageResizer = path => {
+const resizeImage = path => {
   jimp.read(path)
   .then((image) => {
     image.resize(250, 250)
@@ -9,4 +9,4 @@ const imageResizer = path => {
     console.log(err)
   });
 }
-module.exports = imageResizer
+module.exports = resizeImage
